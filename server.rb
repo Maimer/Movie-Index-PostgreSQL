@@ -41,7 +41,7 @@ get '/actors' do
   if params[:query] == nil
     @actors = get_actors(@page).to_a
   else
-    @movies = search("actors", params[:query])
+    @actors = search("actors", params[:query])
   end
   erb :'actors/index'
 end

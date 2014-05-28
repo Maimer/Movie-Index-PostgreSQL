@@ -1,4 +1,5 @@
 require 'pg'
+require 'pry'
 
 def db_connection
   begin
@@ -61,22 +62,20 @@ def get_actor_detail(id)
 end
 
 def search(type, terms)
-  if type == "movies"
-    query = "SELECT movies.title, movies.year, movies.rating, movies.id, movies.synopsis, genres.name AS genre, studios.name
-             AS studio
-             FROM movies
-               JOIN genres ON movies.genre_id = genres.id
-               JOIN studios ON movies.studio_id = studios.id
-             ORDER BY movies.#{order}
-             WHERE movies.title, movies.synopsis LIKE '%$1%'"
-  elsif type == "actors"
-    query = "SELECT actors.name, actors.id FROM actors
-             ORDER BY actors.name
-             WHERE actors.name LIKE '%$1%'"
-  end
-
   db_connection do |conn|
-
-    conn.exec_params(query, [terms])
+    if type == "movies"
+      query = "SELECT movies.title, movies.year, movies.rating, movies.id, movies.synopsis, genres.name AS genre, studios.name
+               AS studio
+               FROM movies
+                 JOIN genres ON movies.genre_id = genres.id
+                 JOIN studios ON movies.studio_id = studios.id
+               WHERE movies.title ILIKE $1
+               ORDER BY movies.title"
+    elsif type == "actors"
+      query = "SELECT actors.name, actors.id FROM actors
+               WHERE actors.name ILIKE $1
+               ORDER BY actors.name"
+    end
+    conn.exec_params(query, ["%#{terms}%"])
   end
 end
