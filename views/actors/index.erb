@@ -13,6 +13,7 @@
     <thead>
         <tr>
             <th>NAME</th>
+            <th>TOTAL MOVIES</th>
         </tr>
     </thead>
 
@@ -20,6 +21,7 @@
         <% @actors.each do |actor| %>
             <tr>
                 <td><a href="/actors/<%= actor["id"] %>"><%= actor["name"] %></a></td>
+                <td><%= actor["count"] %></td>
             </tr>
         <% end %>
     </tbody>
