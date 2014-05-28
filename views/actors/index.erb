@@ -1,0 +1,35 @@
+</br>
+
+<form class="pure-form" action="/actors" method="get">
+    <fieldset>
+        <input name="query" type="text" placeholder="Search">
+        <button type="submit" class="pure-button pure-button-primary">Search</button>
+    </fieldset>
+</form>
+
+</br>
+
+<table class="pure-table-striped">
+    <thead>
+        <tr>
+            <th>NAME</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <% @actors.each do |actor| %>
+            <tr>
+                <td><a href="/actors/<%= actor["id"] %>"><%= actor["name"] %></a></td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
+
+</br>
+
+<div class="pure-menu pure-menu-open pure-menu-horizontal">
+    <ul>
+        <li><a href="/actors?page=<%= @page - 1 %>">Prev</a></li>
+        <li><a href="/actors?page=<%= @page + 1 %>">Next</a></li>
+    </ul>
+</div>

@@ -1,0 +1,28 @@
+</br>
+
+<table class="pure-table-striped">
+    <thead>
+        <tr>
+            <th><%= @title %></th>
+        </tr>
+    </thead>
+
+    <tbody>
+    </tbody>
+</table>
+
+</br>
+
+<table class="pure-table-striped">
+    <thead>
+    </thead>
+
+    <tbody>
+        <% @actor.each do |act| %>
+            <tr>
+                <td><a href="/movies/<%= act["id"] %>"><%= act["title"] %></a></td>
+                <td><%= act["character"] %></td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>

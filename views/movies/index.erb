@@ -1,0 +1,43 @@
+</br>
+
+<form class="pure-form" action="/movies" method="get">
+    <fieldset>
+        <input name="query" type="text" placeholder="Search">
+        <button type="submit" class="pure-button pure-button-primary">Search</button>
+    </fieldset>
+</form>
+
+</br>
+
+<table class="pure-table-striped">
+    <thead>
+        <tr>
+            <th>TITLE</th>
+            <th>YEAR</th>
+            <th>RATING</th>
+            <th>GENRE</th>
+            <th>STUDIO</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <% @movies.each do |movie| %>
+            <tr>
+                <td><a href="/movies/<%= movie["id"] %>"><%= movie["title"] %></a></td>
+                <td><%= movie["year"] %></td>
+                <td><%= movie["rating"] %></td>
+                <td><%= movie["genre"] %></td>
+                <td><%= movie["studio"] %></td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
+
+</br>
+
+<div class="pure-menu pure-menu-open pure-menu-horizontal">
+    <ul>
+        <li><a href="/movies?page=<%= @page - 1 %>">Prev</a></li>
+        <li><a href="/movies?page=<%= @page + 1 %>">Next</a></li>
+    </ul>
+</div>

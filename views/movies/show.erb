@@ -1,0 +1,39 @@
+</br>
+
+<table class="pure-table-striped">
+    <thead>
+    </thead>
+    <tbody>
+        <tr>
+            <td>TITLE</td>
+            <td><%= @title %> (<%= @movie[0]["year"] %>)</td>
+        </tr>
+        <tr>
+            <td>GENRE</td>
+            <td><%= @movie[0]["genre"]%></td>
+        </tr>
+        <tr>
+            <td>STUDIO</td>
+            <td><%= @movie[0]["studio"]%></td>
+        </tr>
+    </tbody>
+</table>
+
+</br>
+
+<table class="pure-table-striped">
+    <thead>
+    </thead>
+
+    <tbody>
+        <% @movie.each do |movie| %>
+            <tr>
+                <td><a href="/actors/<%= movie["id"] %>"><%= movie["actor"] %></a></td>
+                <td><%= movie["character"] %></td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
+
+
+

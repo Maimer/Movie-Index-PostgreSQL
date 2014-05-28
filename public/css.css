@@ -1,0 +1,29 @@
+.wrapper {
+  width: 1300px;
+  margin: 0px auto;
+}
+
+ul li {
+  list-style-type: none;
+}
+
+.col1 {
+  display: inline-block;
+  width: 450px;
+}
+
+.col2 {
+  text-align: center;
+  display: inline-block;
+  width: 80px;
+}
+
+.col3 {
+  display: inline-block;
+  width: 200px;
+}
+
+.col4 {
+  display: inline-block;
+  width: 350px;
+}
